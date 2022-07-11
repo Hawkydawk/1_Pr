@@ -18,12 +18,12 @@ character = pygame.image.load("E:/4_Study/Python/1_Pr/pygame_basic/horsepig_1.pn
 character_size = character.get_rect().size
 character_width = character_size[0]
 character_height = character_size[1]
-character_x_pos = screen_width / 2
-character_y_pos = screen_height - (character_height)
+character_x_pos = screen_width/2
+character_y_pos = screen_height - character_height
 
 to_x = 0
 to_y = 0
-character_speed = 0.5
+character_speed = 0.6
 
 enemy1 = pygame.image.load("E:/4_Study/Python/1_Pr/pygame_basic/monster_zombie_1.png")
 enemy1_size = enemy1.get_rect().size
@@ -63,14 +63,16 @@ while running:
                 to_x += character_speed
         
         if event.type == pygame.KEYUP:
-            to_x = 0
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                to_x = 0
         
     ######### 3.2 캐릭터 위치 정의 ##################    
     character_x_pos += to_x * dt
 
-    # if character_x_pos < 0:
-
-
+    if character_x_pos < 0:
+        character_x_pos = 0
+    elif character_x_pos > (screen_width - character_width/2):
+        character_x_pos = screen_width - character_width/2
 
     ######## 3.3 화면에 그리기 #############################
     screen.blit(background, (0, 0))
