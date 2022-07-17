@@ -95,7 +95,7 @@ while running:
     timer = game_font.render(str(int(total_time - elapsed_time)), True, (243, 196, 25)) #카운트 다운 (출력할 글자, antialias, 글자색)
     screen.blit(timer, (10, 10))
     if total_time - elapsed_time < 0: #타임아웃
-        print("Time Up")
+        print("Time's Up")
         running = False
 
     pygame.display.update()
